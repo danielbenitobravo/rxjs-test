@@ -2,7 +2,8 @@
     <form [formGroup]="form">
         <input formControlName="searchBar" />
     </form>
-    <div>
-        <p>results</p>
+    <div *ngFor="let anime of data">
+        <img [src]="anime.img" />
+        <span>{{ anime.title }}</span>
     </div>
 </div>
