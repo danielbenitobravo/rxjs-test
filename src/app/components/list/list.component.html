@@ -1,9 +1,22 @@
-<div>
-    <form [formGroup]="form">
-        <input formControlName="searchBar" />
-    </form>
-    <div *ngFor="let anime of data">
-        <img [src]="anime.img" />
-        <span>{{ anime.title }}</span>
+<div class="list-container">
+  <form [formGroup]="form">
+    <label>Search your anime...</label>
+    <input
+      #search
+      formControlName="searchBar"
+      placeholder="Press / to search:"
+    />
+  </form>
+  <div class="list-container__content">
+    @if (data.length > 0) { @for (anime of data; track $index) {
+    <div class="list-container__content--filled">
+      <img [src]="anime.img" />
+      <span>{{ anime.title }}</span>
     </div>
+    } } @else {
+    <div class="list-container__content--no-data">
+      <span>No data</span>
+    </div>
+    }
+  </div>
 </div>
